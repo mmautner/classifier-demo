@@ -8,7 +8,7 @@ from nltk.corpus import stopwords
 stop_set = set(stopwords.words('english'))
 
 def get_words(pub):
-    for line in open('%s.txt' % pub):
+    for line in open('data/%s.txt' % pub):
         for word in word_tokenize(line):
             if word in stop_set:
                 continue
@@ -16,7 +16,6 @@ def get_words(pub):
 
 def word_features(pub):
     words = get_words(pub)
-    print type(words)
     return {"contains(%s)" % lemmatize(word): True for word in words}
 
 
