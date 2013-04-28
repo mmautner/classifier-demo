@@ -5,23 +5,43 @@ from nltk.stem.wordnet import WordNetLemmatizer
 import nltk
 from nltk.corpus import stopwords
 
-stop_set = set(stopwords.words('english'))
+LEMMATIZER = WordNetLemmatizer()
+STOP_SET = set(stopwords.words('english'))
 
-def get_words(pub):
-    for line in open('data/%s.txt' % pub):
+def get_words(filename):
+    """returns a generator that allows iteration over 
+    the words in the document, so that the entire document 
+    doesn't need to be loaded into memory.
+
+    Read up about generators here: http://www.dabeaz.com/generators/
+    """
+
+    for line in open('data/%s.txt' % filename):
         for word in word_tokenize(line):
-            if word in stop_set:
+            if word in STOP_SET:
                 continue
             yield word
 
-def word_features(pub):
-    words = get_words(pub)
+def lemmatize(word):
+    """Lowercases and lemmatizes the given word using the given 
+    lemmatizer.
+
+    For information about lemmatization: http://en.wikipedia.org/wiki/Lemmatisation
+    """
+
+    return LEMMATIZER.lemmatize(word.lower())
+
+def word_features(filename):
+    """iterate over a text file and construct a dictionary of lemmatized 
+    words as keys, and a given key's existence in the dictionary as 
+    a feature by which to train a model.
+    """
+
+    words = get_words(filename)
     return {"contains(%s)" % lemmatize(word): True for word in words}
 
 
 if __name__=="__main__":
-    lemmatizer = WordNetLemmatizer()
-    lemmatize = lambda word: lemmatizer.lemmatize(word.lower())
 
     nytimes = [(word_features("nytimes"), "Nytimes")]
     nytimes2 = [(word_features("nytimes2"), "Nytimes")]
