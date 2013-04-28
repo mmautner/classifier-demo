@@ -9,11 +9,9 @@ LEMMATIZER = WordNetLemmatizer()
 STOP_SET = set(stopwords.words('english'))
 
 def get_words(filename):
-    """returns a generator that allows iteration over 
-    the words in the document, so that the entire document 
-    doesn't need to be loaded into memory.
-
-    Read up about generators here: http://www.dabeaz.com/generators/
+    """returns a generator that allows iteration over the words in the 
+    document, so that the entire document doesn't need to be loaded into 
+    memory. Read up about generators here: http://www.dabeaz.com/generators/
     """
 
     for line in open('data/%s.txt' % filename):
@@ -22,19 +20,16 @@ def get_words(filename):
                 continue
             yield word
 
-def lemmatize(word):
-    """Lowercases and lemmatizes the given word using the given 
-    lemmatizer.
-
+def lemmatize(word, lemmatizer=LEMMATIZER):
+    """Lowercases and lemmatizes the given word using the given lemmatizer.
     For information about lemmatization: http://en.wikipedia.org/wiki/Lemmatisation
     """
-
-    return LEMMATIZER.lemmatize(word.lower())
+    return lemmatizer.lemmatize(word.lower())
 
 def word_features(filename):
-    """iterate over a text file and construct a dictionary of lemmatized 
-    words as keys, and a given key's existence in the dictionary as 
-    a feature by which to train a model.
+    """iterate over a text file and construct a dictionary of lemmatized words
+    as keys, and a given key's existence in the dictionary as a feature by 
+    which to train a model.
     """
 
     words = get_words(filename)
