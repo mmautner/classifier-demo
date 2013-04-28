@@ -32,6 +32,7 @@ if __name__=="__main__":
     nltk_data3 = [(word_features("nltk3"), "NLTK")]
     feature_set = nytimes + nytimes2 + nytimes3 + nytimes4 + nltk_data + nltk_data2 + nltk_data3 
     classifier = nltk.NaiveBayesClassifier.train(feature_set)
+    #classifier.show_most_informative_features(5)
 
     print 'nltk4: ', classifier.classify(word_features("nltk4"))
     print 'nytimes5: ', classifier.classify(word_features("nytimes5"))
