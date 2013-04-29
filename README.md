@@ -26,8 +26,8 @@ Sample output:
     nytimes5:  Nytimes
     jezebel:  NLTK
 
-Indicating that the trained classifier--when given an article about NLTK (data/nltk4),
-by the New York Times (nytimes5), and Jezebel (data/jezebel)--classfies them as 
+Indicating that the trained classifier--when given an article about NLTK (data/nltk4.txt),
+by the New York Times (data/nytimes5.txt), and Jezebel (data/jezebel.txt)--classfies them as 
 an NLTK, NYTimes, and NLTK article respectively.
 
 The two additional preprocessing steps this toy classifier performs that greatly 
