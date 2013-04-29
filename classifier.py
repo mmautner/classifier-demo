@@ -12,8 +12,10 @@ def get_words(filename):
     """returns a generator that allows iteration over the words in the 
     document, so that the entire document doesn't need to be loaded into 
     memory. Read up about generators here: http://www.dabeaz.com/generators/
-    """
 
+    If a word is contained in the set of stop words, then it is ignored.
+    Examples of stop words include "the", "it", "so"
+    """
     for line in open('data/%s.txt' % filename):
         for word in word_tokenize(line):
             if word in STOP_SET:

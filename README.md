@@ -13,7 +13,7 @@ You will also need the 'wordnet' and 'stopwords' datasets, which can be obtained
 by opening your python shell and selecting the two packages for download from 
 the NLTK window that pops up:
 
-    $ python classifier.py
+    $ python
     >> import nltk; nltk.download()
 
 You're now set to run the demo script itself:
