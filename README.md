@@ -9,12 +9,12 @@ To try it out, first install the requirements using pip:
 
     $ pip install -r requirements.txt
 
-You will also need the 'wordnet' and 'stopwords' datasets, which can be obtained 
-by opening your python shell and selecting the two packages for download from 
-the NLTK window that pops up:
+You will also need the 'wordnet' and 'stopwords' datasets:
 
-    $ python
-    >> import nltk; nltk.download()
+    shell$ python
+    >> import nltk
+    >> nltk.download('wordnet')
+    >> nltk.download('stopwords')
 
 You're now set to run the demo script itself:
 
